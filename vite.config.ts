@@ -2,7 +2,7 @@
 
 import path from 'path'
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import Solid from 'vite-plugin-solid'
 import Pages from 'vite-plugin-pages'
 import AutoImport from 'unplugin-auto-import/vite'
 import Unocss from 'unocss/vite'
@@ -18,7 +18,7 @@ export default defineConfig({
     // see unocss.config.ts for config
     Unocss(),
 
-    react(),
+    Solid(),
 
     // https://github.com/hannoeru/vite-plugin-pages
     Pages(),
@@ -26,9 +26,8 @@ export default defineConfig({
     // https://github.com/antfu/unplugin-auto-import
     AutoImport({
       imports: [
-        'react',
-        'react-router-dom',
-        { 'usehooks-ts': ['useCounter', 'useDarkMode'] },
+        'solid-js',
+        'solid-app-router',
       ],
       dts: true,
     }),
@@ -37,5 +36,19 @@ export default defineConfig({
   // https://github.com/vitest-dev/vitest
   test: {
     environment: 'jsdom',
+    globals: true,
+    transformMode: {
+      web: [/\.[jt]sx?$/],
+    },
+    setupFiles: './test/setup.ts',
+    // solid needs to be inline to work around
+    // a resolution issue in vitest:
+    deps: {
+      inline: [/solid-js/],
+    },
+    // if you have few tests, try commenting one
+    // or both out to improve performance:
+    threads: false,
+    isolate: false,
   },
 })

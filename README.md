@@ -3,7 +3,7 @@
 </p>
 
 <h6 align='center'>
-<a href="https://vitesse-lite-react.netlify.app/">Live Demo</a>
+<a href="https://vitesse-lite-svelte.netlify.app/">Live Demo</a>
 </h6>
 
 <h5 align='center'>
@@ -75,7 +75,7 @@ See [Vitesse](https://github.com/antfu/vitesse) for full featureset.
 If you prefer to do it manually with the cleaner git history
 
 ```bash
-npx degit lxy-yz/vitesse-lite-react my-react-app
-cd my-react-app
+npx degit brandonxiang/vitesse-lite-svelte my-svelte-app
+cd my-svelte-app
 pnpm i # If you don't have pnpm installed, run: npm install -g pnpm
 ```

@@ -1,10 +1,10 @@
 export default function Index() {
-  const name = useRef<HTMLInputElement>(null)
+  const [name, setName] = createSignal('')
 
   const navigate = useNavigate()
   const go = () => {
-    if (name.current)
-      navigate(`/hi/${encodeURIComponent(name.current.value)}`)
+    if (name)
+      navigate(`/hi/${encodeURIComponent(name())}`)
   }
 
   return (
@@ -22,18 +22,20 @@ export default function Index() {
       <div className="py-4" />
 
       <input
-        ref={name}
         id="input"
         placeholder="What's your name?"
         type="text"
         className="px-4 py-2 w-250px text-center bg-transparent outline-none outline-active:none border border-rounded border-gray-200 border-dark:gray-700"
         onKeyDown={({ key }) => key === 'Enter' && go()}
+        onInput={(e) => {
+          setName(e.target.value)
+        }}
       />
 
       <div>
         <button
           className="m-3 text-sm btn"
-          disabled={!name}
+          disabled={name() === ''}
           onClick={() => go() }
         >
         Go

@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "jsx": "react-jsx",
+
     "baseUrl": ".",
     "module": "ESNext",
     "target": "es2016",
@@ -14,10 +14,12 @@
     "noUnusedLocals": true,
     "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
-    "types": [
-      "vite/client",
-      "vite-plugin-pages/client-react"
-    ],
+    "allowSyntheticDefaultImports": true,
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
+    "types": ["vite/client"],
+    "noEmit": true,
+    "isolatedModules": true,
     "paths": {
       "~/*": ["src/*"]
     }

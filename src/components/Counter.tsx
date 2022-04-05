@@ -1,9 +1,17 @@
 export default function Counter({ initial }: { initial: number }) {
-  const { count, increment, decrement } = useCounter(initial ?? 0)
+  const [count, setCount] = createSignal(initial ?? 0)
+
+  const increment = () => {
+    setCount(count() + 1)
+  }
+
+  const decrement = () => {
+    setCount(count() - 1)
+  }
 
   return (
     <div>
-      {count}
+      {count()}
       <button className="inc" onClick={() => increment()}>
       +
       </button>
